@@ -18,10 +18,11 @@
 	</head>
 	<body>
 		<article></article>
-		<div id="status"></div>
-		
+
+
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript">
+			$('<div>').attr('id','status').appendTo('article');
 			var window_height = $(window).height();//視窗若視高度
 
 			var div_height = $('#status').height();//元件高度
