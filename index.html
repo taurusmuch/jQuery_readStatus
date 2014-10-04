@@ -22,26 +22,35 @@
 
 		<script src="js/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript">
-			$('<div>').attr('id','status').appendTo('article');
-			var window_height = $(window).height();//視窗若視高度
 
-			var div_height = $('#status').height();//元件高度
-			var div_bottom = $('#status').css('bottom');
-			div_bottom = parseInt(div_bottom, 10)
-			console.log(div_bottom);
-			var document_height = $(document).height();//文件高度
-			var init_scrollBottom = $(document).scrollTop()+window_height;//一開始scrollBar下緣高度
+		;(function($) {
+			$.fn.readstatus = function() {
+				$('<div>').attr('id','status').appendTo('article');
+				var window_height = $(window).height();//視窗若視高度
 
-			var init_gap = document_height - init_scrollBottom;//scrollBar下緣與文章下緣差距
-			var scrollBottom,persent;
+				var div_height = $('#status').height();//元件高度
+				var div_bottom = $('#status').css('bottom');
+				div_bottom = parseInt(div_bottom, 10)
+				console.log(div_bottom);
+				var document_height = $(document).height();//文件高度
+				var init_scrollBottom = $(document).scrollTop()+window_height;//一開始scrollBar下緣高度
 
-			$(document).scroll(function(event) {
-				scrollBottom = ($(document).scrollTop()+window_height)-init_scrollBottom;//判斷滾動後scrollBar下緣與一開始scrollBar下緣高度的差
-				persent = scrollBottom / init_gap;//高度差與初始差距的比例
-				persent = ((window_height-div_bottom-div_height-div_bottom)*persent)+div_bottom;//((視窗高度-上方留白-元件高度-下方留白)*比例)+留白
-				$('#status').css('bottom', persent+'px');
-				
-			});
+				var init_gap = document_height - init_scrollBottom;//scrollBar下緣與文章下緣差距
+				var scrollBottom,persent;
+
+				$(document).scroll(function(event) {
+					scrollBottom = ($(document).scrollTop()+window_height)-init_scrollBottom;//判斷滾動後scrollBar下緣與一開始scrollBar下緣高度的差
+					persent = scrollBottom / init_gap;//高度差與初始差距的比例
+					persent = ((window_height-div_bottom-div_height-div_bottom)*persent)+div_bottom;//((視窗高度-上方留白-元件高度-下方留白)*比例)+留白
+					$('#status').css('bottom', persent+'px');
+					
+				});	
+			};
+			
+		})(jQuery);
+
+
+		$(this).readstatus();
 		</script>
 	</body>
 </html>
