@@ -1,1 +1,68 @@
+<<<<<<< HEAD
 My GitHub Page
+=======
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<link href="http://meyerweb.com/eric/tools/css/reset/reset.css" rel="stylesheet" type="text/css" />
+		<style type="text/css">
+			#status{
+				max-width: 50px;
+				max-height: 50px;
+				position: fixed;
+				bottom: 10px;
+				left: 10px;
+			}
+			article{
+				height: 3000px; 
+			}
+		</style> 
+	</head>
+	<body>
+		<article></article>
+		<script src="js/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript">
+
+		;(function($) {
+			$(window).scrollTop(0);
+			$.fn.readstatus = function(settings) {
+				//預設值
+				var _defaultSettings = {
+										        pic: 'http://www.iconsdb.com/icons/download/orange/sun-2-512.gif'
+										    };
+				var _settings = $.extend(_defaultSettings, settings);
+				//產生圖片並插入至article
+				var img = $('<img>').attr('id','status').attr('src',_settings.pic).appendTo('article');
+				//等圖片load進來再執行，必免取不到高度
+				$( "img#status" ).load(function() {
+					var window_height = $(window).height();//視窗若視高度
+
+					var div_height = $('#status').height();//元件高度
+					var div_bottom = $('#status').css('bottom');
+					div_bottom = parseInt(div_bottom, 10);//取得元件與邊框留白的高度，型態為數字
+					var document_height = $(document).height();//文件高度
+					var init_scrollBottom = $(document).scrollTop()+window_height;//一開始scrollBar下緣高度
+
+					var init_gap = document_height - init_scrollBottom;//scrollBar下緣與文章下緣差距
+					var scrollBottom,persent;
+
+					$(document).scroll(function(event) {
+						scrollBottom = ($(document).scrollTop()+window_height)-init_scrollBottom;//判斷滾動後scrollBar下緣與一開始scrollBar下緣高度的差
+						persent = scrollBottom / init_gap;//高度差與初始差距的比例
+						persent = ((window_height-div_bottom-div_height-div_bottom)*persent)+div_bottom;//((視窗高度-上方留白-元件高度-下方留白)*比例)+留白
+						$('#status').css('bottom', persent+'px');
+						
+					});	
+				});
+			};
+			
+		})(jQuery);
+
+
+		$(this).readstatus({
+			pic : 'http://winterbluescoach.com/wp-content/uploads/2010/12/LightDiet-sun-icon.jpg'
+		});
+		</script>
+	</body>
+</html>
+>>>>>>> 40f1ede319ca38ba20866167534f2d122add7bc3
