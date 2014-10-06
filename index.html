@@ -3,13 +3,6 @@
 	<head>
 		<link href="http://meyerweb.com/eric/tools/css/reset/reset.css" rel="stylesheet" type="text/css" />
 		<style type="text/css">
-			#status{
-				max-width: 50px;
-				max-height: 50px;
-				position: fixed;
-				bottom: 10px;
-				left: 10px;
-			}
 			article{
 				height: 3000px; 
 			}
@@ -25,11 +18,39 @@
 			$.fn.readstatus = function(settings) {
 				//預設值
 				var _defaultSettings = {
-										        pic: 'http://www.iconsdb.com/icons/download/orange/sun-2-512.gif'
-										    };
+								        pic: 'http://www.iconsdb.com/icons/download/orange/sun-2-512.gif',
+								        bottom: '10px',
+								        left: '10',
+								        maxWidth: '50px',
+										maxHeight: '50px',
+										appendTo: 'body',
+										float:'left'
+									    };	
 				var _settings = $.extend(_defaultSettings, settings);
 				//產生圖片並插入至article
-				var img = $('<img>').attr('id','status').attr('src',_settings.pic).appendTo('article');
+				var img = $('<img>')
+							.attr('id','status')
+							.attr('src',_settings.pic)
+							.css({
+								'bottom': _settings.bottom,
+								'left': function (){
+									switch(_settings.float){
+										case 'left':
+											$value = _settings.left;
+										break;
+										case 'right':
+											$value = $(window).width()-_settings.left;
+										break;									
+									}
+									console.log($value);
+
+									return $value+'px';
+								},
+								'max-height': _settings.maxWidth,
+								'max-height': _settings.maxHeight,
+								'position': 'fixed'
+							})
+							.appendTo(_settings.appendTo);
 				//等圖片load進來再執行，必免取不到高度
 				$( "img#status" ).load(function() {
 					var window_height = $(window).height();//視窗若視高度
@@ -57,7 +78,8 @@
 
 
 		$(this).readstatus({
-			pic : 'http://winterbluescoach.com/wp-content/uploads/2010/12/LightDiet-sun-icon.jpg'
+			pic : 'http://winterbluescoach.com/wp-content/uploads/2010/12/LightDiet-sun-icon.jpg',
+
 		});
 		</script>
 	</body>
