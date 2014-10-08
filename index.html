@@ -1,6 +1,7 @@
 <!DOCTYPE HTML>
 <html>
 	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 		<link href="http://meyerweb.com/eric/tools/css/reset/reset.css" rel="stylesheet" type="text/css" />
 		<style type="text/css">
 			header, footer{
@@ -22,8 +23,11 @@
 			.detail{
 				font-size: 16px;
 				margin: 0 0 10px 0;
+				color:#666;
 			}
-
+			.dwnBtn{
+				background-color: #2098d1;
+			}
 		</style> 
 	</head>
 	<body>
@@ -36,27 +40,74 @@
 			<div style="width:700px;margin:0 auto;">
 				<div>
 					<div class="title">DOWNLOADING</div>
-					<div class="detail">detail</div>
+					<div class="detail dwnBtn" style="width:187px;height:60px"><a style="color: #fff;vertical-align: middle;padding: 1em 3.4em .81em 1em;">DOWNLOAD</a></div>
 				</div>
 				<div>
 					<div class="title">ABOUT</div>
-					<div class="detail">detail</div>
+					<div class="detail">此套件為提供使用者閱讀網頁時的瀏覽進度</div>
 				</div>
 				<div>
-					<div class="title">INCLUDING IT ON YOUR PAGE</div>
-					<div class="detail">detail</div>
+					<div class="title">$(this).readstatus(</div>
+					<div class="detail">1.載入jQuery</div>
+					<div class="detail">&lt;script src=&quot;js/jquery-2.1.1.min.js&quot;&gt;&lt;/script&gt;</div>
+					<div class="detail">2.載入readStatus.js</div>
+					<div class="detail">&lt;script src=&quot;js/jQuery_readStatus.js&quot;&gt;&lt;/script&gt;</div>
+					<div class="detail">3.啟動reasStatus</div>
+					<div class="detail">$(this).readstatus();</div>
 				</div>
 				<div>
 					<div class="title">CONFIGURATION PARAMETERS</div>
-					<div class="detail">detail</div>
+					<div class="detail">		
+						<table>
+							<tr>
+								<td>pic</td>
+								<td>圖片網址</td>
+								<td>String, 輸入想要的圖片</td>
+							</tr>
+							<tr>
+								<td>float</td>
+								<td>圖像顯示位置</td>
+								<td>String, left:左側;right:右側</td>
+							</tr>
+							<tr>
+								<td>appendTo</td>
+								<td>套件套用的位置</td>
+								<td>String, 預設位置為body</td>
+							</tr>
+							<tr>
+								<td>bottom</td>
+								<td>套件下方留白的高度</td>
+								<td>Integer, 預設高度10px</td>
+							</tr>
+							<tr>
+								<td>left</td>
+								<td>左(右)側留白的寬度</td>
+								<td>Integer, 預設寬度10px</td>
+							</tr>
+							<tr>
+								<td>maxWidth</td>
+								<td>圖片最大寬度</td>
+								<td>Integer, 預設為50px</td>
+							</tr>
+							<tr>
+								<td>maxHeight</td>
+								<td>圖片最大高度</td>
+								<td>Integer, 預設為50px</td>
+							</tr>
+							
+						</table>
+
+					
+					</div>
 				</div>
 				<div>
 					<div class="title">LICENSE</div>
-					<div class="detail">detail</div>
+					<div class="detail"> You may use any jQuery project under the terms of either the MIT License
+    or the GNU General Public License (GPL) Version 2.</div>
 				</div>
 				<div>
 					<div class="title">CHANGELOG</div>
-					<div class="detail">detail</div>
+					<div class="detail">1.0.0: First version.</div>
 				</div>
 			</div>
 		</article>
